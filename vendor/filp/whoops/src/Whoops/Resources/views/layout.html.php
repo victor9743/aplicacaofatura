@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex,nofollow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title><?php echo $tpl->escape($page_title) ?></title>
 
     <style><?php echo $stylesheet ?></style>
