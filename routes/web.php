@@ -74,14 +74,6 @@ Route::middleware([
     Route::post('/fatura/salvar',  [fatura_controller::class, 'salvar']);
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/index',  [fatura_controller::class, 'index'])->name('dashboard');
-});
-
 
 Route::middleware([
     'auth:sanctum',
