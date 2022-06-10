@@ -4,7 +4,6 @@
 <?php $__env->startSection('content'); ?> 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <?php echo csrf_field(); ?>
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->

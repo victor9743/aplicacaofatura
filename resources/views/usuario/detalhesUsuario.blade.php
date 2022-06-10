@@ -48,11 +48,11 @@
                         </div>
                         <div class="form-outline form-white row">
                             <div class="col-6 d-flex">
-                                <a href="/fatura/cadastrar" class="btn btn-primary">Voltar</a>
+                                <a href="/fatura/index" class="btn btn-primary">Voltar</a>
                             </div>
 
                             <div class="col-6 d-flex justify-content-end">
-                                <a href="/fatura/cadastrar" class="btn btn-primary">Salvar</a>
+                                <a href="/fatura/index" class="btn btn-primary">Salvar</a>
                             </div>
                         </div>
                        

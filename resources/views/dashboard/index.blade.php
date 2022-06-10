@@ -4,7 +4,6 @@
 @section('content') 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  @csrf
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
