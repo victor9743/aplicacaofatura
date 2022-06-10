@@ -71,7 +71,7 @@
                         <label class="form-label" for="imgRecibo">Imagem do recibo</label><br>
                         <input type="file" id="imgRecibo" name="imgRecibo" value="<?php echo e(isset($fatura->imgRecibo) ? $fatura->imgRecibo : ''); ?>"/>
                         <?php if(isset($fatura->imgRecibo)): ?>
-                            <img src="/img/faturas/<?php echo e($fatura->imgRecibo); ?>" alt="<?php echo e($fatura->descricao); ?>" style="width: 100px; margin-top:10px">
+                            <img src="/img/recibos/<?php echo e($fatura->imgRecibo); ?>" alt="<?php echo e($fatura->descricao); ?>" style="width: 100px; margin-top:10px">
                         <?php endif; ?>
                         
                     </div>

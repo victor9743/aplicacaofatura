@@ -71,7 +71,7 @@
                         <label class="form-label" for="imgRecibo">Imagem do recibo</label><br>
                         <input type="file" id="imgRecibo" name="imgRecibo" value="{{ isset($fatura->imgRecibo) ? $fatura->imgRecibo : '' }}"/>
                         @if (isset($fatura->imgRecibo))
-                            <img src="/img/faturas/{{ $fatura->imgRecibo }}" alt="{{$fatura->descricao}}" style="width: 100px; margin-top:10px">
+                            <img src="/img/recibos/{{ $fatura->imgRecibo }}" alt="{{$fatura->descricao}}" style="width: 100px; margin-top:10px">
                         @endif
                         
                     </div>

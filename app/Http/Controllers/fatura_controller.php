@@ -22,12 +22,15 @@ class fatura_controller extends Controller
     }
 
     public function salvar(Request $campos){
-        $campos->validate([
-            'descricao' => 'required',
-            'valorFatura' => 'required',
-            'imgFatura' => 'required',
-            'vencimento' => 'required'
-        ]);
+
+        if($campos->id_Fatura == 0) {
+            $campos->validate([
+                'descricao' => 'required',
+                'valorFatura' => 'required',
+                'imgFatura' => 'required',
+                'vencimento' => 'required'
+            ]);
+        }
         $con = new Fatura;
         $data = $campos->all();
         unset($data["id_Fatura"]);
@@ -88,6 +91,46 @@ class fatura_controller extends Controller
         } else {
             
             Fatura::findOrFail($campos ->id_Fatura)->update($data);
+
+            if($campos->hasFile('imgFatura') && $campos->file('imgFatura')->isValid()) {
+                $requestImage = $campos->imgFatura;
+    
+                // atribuir a variavel a extensão do arquivo
+                $extension = $requestImage->extension();
+    
+                // cria uma hash e concatena com o tempo atual
+                $imageName = md5($requestImage->getClientOriginalName().strtotime("now") . "." . $extension);
+    
+                // mover o arquivo/imagem para o diretório
+                $campos->imgFatura->move(public_path('img/faturas'), $imageName);
+    
+                // salvar a url do arquivo/imagem no banco
+                if($campos->id_Fatura == 0) {
+                    $con->imgFatura = $imageName;
+                } else {
+                    $data['imgFatura'] = $imageName;
+                }
+            }
+    
+            if($campos->hasFile('imgRecibo') && $campos->file('imgRecibo')->isValid()) {
+                $requestImage = $campos->imgRecibo;
+    
+                // atribuir a variavel a extensão do arquivo
+                $extension = $requestImage->extension();
+    
+                // cria uma hash e concatena com o tempo atual
+                $imageName = md5($requestImage->getClientOriginalName().strtotime("now") . "." . $extension);
+    
+                // mover o arquivo/imagem para o diretório
+                $campos->imgRecibo->move(public_path('img/recibos'), $imageName);
+    
+                // salvar a url do arquivo/imagem no banco
+                if($campos->id_Fatura == 0) {
+                    $con->imgRecibo = $imageName;
+                } else {
+                    $data['imgRecibo'] = $imageName;
+                }
+            }
         }
 
         return redirect("/fatura/index")->with('msg', 'Cadastro salvo com sucesso !!!');
