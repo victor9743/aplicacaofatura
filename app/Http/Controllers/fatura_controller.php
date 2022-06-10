@@ -22,12 +22,24 @@ class fatura_controller extends Controller
     }
 
     public function salvar(Request $campos){
+        $campos->validate([
+            'descricao' => 'required',
+            'valorFatura' => 'required',
+            'imgFatura' => 'required',
+            'vencimento' => 'required'
+        ]);
         $con = new Fatura;
         $data = $campos->all();
         unset($data["id_Fatura"]);
         // pegando o usuario logado
         $usuario = auth()->user();
         $con->user_id = $usuario->id;
+        $con->descricao = $campos->descricao;
+        $con->valorFatura = $campos->valorFatura;
+        $con->imgFatura = $campos->imgFatura;
+        $con->vencimento = $campos->vencimento;
+        $con->imgRecibo = $campos->imgRecibo;
+        $con->dataPagamento = $campos->dataPagamento;
 
         if($campos->hasFile('imgFatura') && $campos->file('imgFatura')->isValid()) {
             $requestImage = $campos->imgFatura;
@@ -70,19 +82,6 @@ class fatura_controller extends Controller
         }
 
         if($campos->id_Fatura == 0) {
-            $campos->validate([
-                'descricao' => 'required',
-                'valorFatura' => 'required',
-                'imgFatura' => 'required',
-                'vencimento' => 'required'
-            ]);
-          
-            $con->descricao = $campos->descricao;
-            $con->valorFatura = $campos->valorFatura;
-            $con->imgFatura = $campos->imgFatura;
-            $con->vencimento = $campos->vencimento;
-            $con->imgRecibo = $campos->imgRecibo;
-            $con->dataPagamento = $campos->dataPagamento;
 
 
             $con->save();

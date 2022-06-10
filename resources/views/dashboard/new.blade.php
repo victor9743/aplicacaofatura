@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="form-outline mb-4 col-sm-8">
-                        <label class="form-label" for="imgFatura">Imagem da fatura</label>
+                        <label class="form-label" for="imgFatura">Imagem da fatura</label><br>
                         <input type="file" name="imgFatura" id="imgFatura" value="{{ isset($fatura->imgFatura) ? $fatura->imgFatura : '' }}"/>
                         @if (isset($fatura->imgFatura))
                             <img src="/img/faturas/{{ $fatura->imgFatura }}" alt="{{$fatura->descricao}}" style="width: 100px; margin-top:10px">
@@ -68,7 +68,7 @@
             
                 <div class="col-sm-6">
                     <div class="form-outline mb-4 col-sm-8">
-                        <label class="form-label" for="imgRecibo">Imagem do recibo</label>
+                        <label class="form-label" for="imgRecibo">Imagem do recibo</label><br>
                         <input type="file" id="imgRecibo" name="imgRecibo" value="{{ isset($fatura->imgRecibo) ? $fatura->imgRecibo : '' }}"/>
                         @if (isset($fatura->imgRecibo))
                             <img src="/img/faturas/{{ $fatura->imgRecibo }}" alt="{{$fatura->descricao}}" style="width: 100px; margin-top:10px">
