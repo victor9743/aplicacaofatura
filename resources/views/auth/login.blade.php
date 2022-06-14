@@ -32,13 +32,13 @@
                     <div class="d-flex col-sm-6">
                         <label for="remember_me" >
                             <x-jet-checkbox id="remember_me" name="remember" />
-                            <span class="ml-2 text-sm text-light-600">{{ __('Remember me') }}</span>
+                            <span class="ml-2 text-sm text-light-600">{{ __('Lembrar-me') }}</span>
                         </label>
                     </div>
                     <div class=" col-sm-6 d-flex justify-content-end align-items-center">
                         @if (Route::has('password.request'))
                             <a class="underline text-sm text-light-600 hover:text-white-50 flex items-end" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
+                                {{ __('Esqueceu a senha?') }}
                             </a>
                         @endif
                     </div>
